@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="module">
+      const template = document.querySelector("template");
+      const data = document.querySelector(".data");
+      for (let i = 0; i < 5; i++) {
+        const textData = template.content.cloneNode(true);
+        textData.querySelector("p").textContent = `Esta es la clomacion template número ${i + 1}`;
+        data.appendChild(textData);
+      }
+    </script>
+  </head>
+  <body>
+    <template>
+      <div class="container">
+        <p>Texto dentro de container</p>
+        <img src="https://picsum.photos/200" alt="" />
+      </div>
+    </template>
+    <div class="data"></div>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script type="module">
+    document.addEventListener("DOMContentLoaded", () => {
+      // Seleccionar los templates utilizando la clase correcta
+      const imageTemplate = document.querySelector("template.image-template");
+      const videoTemplate = document.querySelector("template.video-template");
+      const data = document.querySelector(".data");
+
+      // Clonar y agregar el template de la imagen
+      for (let i = 0; i < 3; i++) {
+        const clonedImage = imageTemplate.content.cloneNode(true);
+        clonedImage.querySelector("p").textContent = `Esta es la clonación del template de imagen número ${i + 1}`;
+        data.appendChild(clonedImage);
+      }
+
+      // Clonar y agregar el template del video
+      for (let i = 0; i < 2; i++) {
+        const clonedVideo = videoTemplate.content.cloneNode(true);
+        clonedVideo.querySelector("p").textContent = `Este es el template de video número ${i + 1}`;
+        clonedVideo.querySelector("video").src = `https://www.w3schools.com/html/mov_bbb.mp4`; // URL del video
+        data.appendChild(clonedVideo);
+      }
+    });
+  </script>
+</head>
+<body>
+  <!-- Definir el primer template para la imagen -->
+  <template class="image-template">
+    <div class="container">
+      <p>Texto dentro de container de imagen</p>
+      <img src="https://picsum.photos/200" alt="Imagen aleatoria" />
+    </div>
+  </template>
+
+  <!-- Definir el segundo template para el video -->
+  <template class="video-template">
+    <div class="container">
+      <p>Texto dentro de container de video</p>
+      <video width="320" height="240" controls>
+        <source src="" type="video/mp4" />
+        Tu navegador no soporta la reproducción de videos.
+      </video>
+    </div>
+  </template>
+
+  <!-- Contenedor donde se agregan los templates -->
+  <div class="data"></div>
+</body>
+</html>
